@@ -19,6 +19,11 @@ public class JobController {
         return jobRepository.findAll();
     }
 
+    @GetMapping("/filter")
+    public List<JobApplication> getJobsByStatus(@RequestParam String status) {
+        return jobRepository.findByStatus(status);
+    }
+
     record newJob(Integer id, String companyName, String role, String dateApplied, String status){}
 
     @PostMapping
